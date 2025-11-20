@@ -1,0 +1,77 @@
+20. Valid Parentheses
+
+----------------------------------------------------------------------------------------------------------------------------------
+    Problem Statement
+----------------------------------------------------------------------------------------------------------------------------------
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+    Open brackets must be closed by the same type of brackets.
+    Open brackets must be closed in the correct order.
+    Every close bracket has a corresponding open bracket of the same type.
+
+Example 1:
+    Input: s = "()"
+    Output: true
+
+Example 2:
+    Input: s = "()[]{}"
+    Output: true
+
+Example 3:
+    Input: s = "(]"
+    Output: false
+
+Example 4:
+    Input: s = "([])"
+    Output: true
+
+Example 5:
+    Input: s = "([)]"
+    Output: false
+
+Constraints:
+    1 <= s.length <= 104
+    s consists of parentheses only '()[]{}'.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Code Solution in C++
+
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> st;
+        for(auto ch : s) {
+            if (ch=='{' || ch =='[' || ch=='(' ) {
+                st.push(ch);
+            }else if (ch=='}' || ch ==']' || ch == ')' ){
+            if (st.empty()) return false;
+                char sch = st.top();
+            if ( (sch=='{' && ch =='}') || (sch=='[' && ch==']') || (sch=='(' && ch==')' ) ){
+                st.pop();
+            }else {
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+    return st.empty();
+    }
+};
+
+
+Explaination:
+
+To solve this problem, I am using stack as data structure and basic string iteration logic.
+- Firstly, we have initialized a stack as "stack<char> st"
+- Then, we will be going to iterate the given string of parenthesis character by character.
+- If we encounter an opening brace, we will push the intem into the stack.
+- If we encounter closing braces ->
+                    The stack is not empty.
+                    The top of the stack is the matching opening bracket
+- If they matches, then pop from the stack
+- At the end, check if stack is empty or not.
+
+----------------------------------------------------------------------------------------------------------------------------------
