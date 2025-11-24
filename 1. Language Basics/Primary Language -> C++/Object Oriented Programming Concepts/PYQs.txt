@@ -1,1 +1,11 @@
-Previously Asked Questions
+----------------------------------------------Previously Asked Questions----------------------------------------------------------
+
+Constructors and Destructors
+
+Inheritance
+
+Encapsulation
+
+Polymorphism
+
+Abstraction
